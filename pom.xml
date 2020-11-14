@@ -19,6 +19,7 @@
         <module>springboot-study-persistence</module>
         <module>springboot-study-websocket</module>
         <module>springboot-study-web</module>
+        <module>springboot-study-core</module>
     </modules>
 
     <dependencies>
