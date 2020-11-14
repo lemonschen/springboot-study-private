@@ -2,10 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>top.uninut</groupId>
-    <artifactId>study</artifactId>
+    <groupId>uninut.top</groupId>
+    <artifactId>springboot-study-ftp</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springboot-study-private</name>
+    <name>springboot-study-ftp</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -15,29 +15,12 @@
         <spring-boot.version>2.3.4.RELEASE</spring-boot.version>
     </properties>
 
-    <modules>
-        <module>springboot-study-persistence</module>
-        <module>springboot-study-websocket</module>
-        <module>springboot-study-web</module>
-        <module>springboot-study-core</module>
-        <module>springboot-study-redis</module>
-        <module>springboot-study-elasticsearch</module>
-        <module>springboot-study-kafka</module>
-        <module>springboot-study-ftp</module>
-    </modules>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-            <optional>true</optional>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -80,7 +63,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.3.4.RELEASE</version>
                 <configuration>
-                    <mainClass>top.uninut.study.SpringbootStudyPrivateApplication</mainClass>
+                    <mainClass>uninut.top.ftp.SpringbootStudyFtpApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>
