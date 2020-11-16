@@ -18,13 +18,13 @@ public class FileController {
     }
 
     @PostMapping
-    public RestResult<Object> save(@RequestBody File file) {
+    public RestResult<?> save(@RequestBody File file) {
         service.save(file);
         return new RestResult<>().success();
     }
 
     @DeleteMapping("/{id}")
-    public RestResult<Object> delete(@PathVariable long id) {
+    public RestResult<?> delete(@PathVariable long id) {
         service.delete(id);
         return new RestResult<>().success();
     }
