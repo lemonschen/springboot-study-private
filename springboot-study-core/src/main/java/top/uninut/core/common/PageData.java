@@ -13,9 +13,9 @@ public class PageData {
     @JSONField(ordinal = 1)
     private int pageIndex;
     @JSONField(ordinal = 2)
-    private int pageSizes;
+    private int pageSize;
     @JSONField(ordinal = 3)
     private int totalPages;
     @JSONField(ordinal = 4)
-    private long totalSizes;
+    private long totalSize;
 }

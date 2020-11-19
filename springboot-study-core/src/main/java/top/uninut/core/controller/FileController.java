@@ -6,9 +6,6 @@ import top.uninut.core.common.RestResult;
 import top.uninut.core.entity.File;
 import top.uninut.core.service.FileService;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @RestController
 @RequestMapping("/file")
 public class FileController {
@@ -38,9 +35,5 @@ public class FileController {
             @RequestParam(required = false) String sortColumn, @RequestParam(required = false) String sortDirection
     ) {
         return new RestResult<File>().pageSuccess(service.findAll(pageIndex,pageSize,fileName,sortColumn,sortDirection));
-    }
-
-    public static void main(String[] args) {
-        Map map = new HashMap();
     }
 }

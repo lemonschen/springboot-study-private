@@ -1,6 +1,7 @@
 package top.uninut.core.common;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,9 +12,9 @@ import org.springframework.data.domain.Page;
 @AllArgsConstructor
 public class RestResult<T> {
     private int code;
-    @JSONField(ordinal = 1)
+    @JSONField(ordinal = 1,serialzeFeatures = SerializerFeature.WriteMapNullValue)
     private String msg;
-    @JSONField(ordinal = 2)
+    @JSONField(ordinal = 2,serialzeFeatures = SerializerFeature.WriteMapNullValue)
     private Object data;
 
 
@@ -36,7 +37,7 @@ public class RestResult<T> {
         this.msg = "请求成功";
         this.data = new PageData(
                 page.getContent(),
-                page.getPageable().getPageNumber() + 1,
+                page.getPageable().getPageNumber(),
                 page.getPageable().getPageSize(),
                 page.getTotalPages(),
                 page.getTotalElements()
