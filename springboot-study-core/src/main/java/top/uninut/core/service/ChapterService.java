@@ -21,7 +21,7 @@ public class ChapterService {
     }
 
     public Page<Chapter> chapters(int novelId, Pageable pageable){
-        return repository.findChapterIdAndChapterNameAndChapterIndexByNovelIdOrderByChapterIndexAsc(novelId,pageable);
+        return repository.findByNovelIdOrderByChapterIndexAsc(novelId,pageable);
     }
 
     public Chapter chapter(int novelId,int chapterIndex){

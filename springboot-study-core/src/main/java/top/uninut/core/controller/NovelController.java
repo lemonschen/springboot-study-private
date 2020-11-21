@@ -31,8 +31,18 @@ public class NovelController {
         return new RestResult<Chapter>().pageSuccess(chapterService.chapters(novelId,pageable));
     }
 
-    @GetMapping("/{novelId}/chapter/{chapterIndex}")
+    @GetMapping("/{novelId}/{chapterIndex}")
     public RestResult<Chapter> chapter(@PathVariable int novelId,@PathVariable int chapterIndex){
         return new RestResult<Chapter>().success(chapterService.chapter(novelId,chapterIndex));
+    }
+
+    @PostMapping
+    public RestResult<?> save(@RequestBody String novelFilePath){
+        try {
+            novelService.saveNovel(novelFilePath);
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+        return new RestResult<>().success();
     }
 }

@@ -1,9 +1,12 @@
 package top.uninut.core.entity;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Data
 @Table(name = "novel")
 public class Novel {
     @Id
@@ -21,7 +24,7 @@ public class Novel {
 
     @Basic
     @Column(name = "create_time")
-    private LocalDateTime createTime;
+    private LocalDateTime createTime = LocalDateTime.now();
 
     @Basic
     @Column(name = "cover_image")

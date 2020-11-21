@@ -1,8 +1,15 @@
 package top.uninut.core.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "chapter")
 public class Chapter {
 
@@ -27,4 +34,11 @@ public class Chapter {
     @Lob
     @Column(length = 100000)
     private String content;
+
+    public Chapter(long chapterId,int novelId,int chapterIndex,String chapterName){
+        this.chapterId = chapterId;
+        this.novelId = novelId;
+        this.chapterIndex = chapterIndex;
+        this.chapterName = chapterName;
+    }
 }
