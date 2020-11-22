@@ -13,4 +13,10 @@ public interface ChapterRepository extends JpaRepository<Chapter,Long> {
     Page<Chapter> findByNovelIdOrderByChapterIndexAsc(int novelId, Pageable pageable);
 
     Chapter findByNovelIdAndChapterIndex(int novelId,int chapterId);
+
+    @Query("select a from Chapter a where a.novelId = ?1 and a.chapterIndex < ?2 order by a.chapterIndex desc")
+    Page<Chapter> findPreviousByNovelIdAndChapterIndex(int novelId,int chapterId,Pageable pageable);
+
+    @Query("select a from Chapter a where a.novelId = ?1 and a.chapterIndex > ?2 order by a.chapterIndex asc")
+    Page<Chapter> findNextByNovelIdAndChapterIndex(int novelId,int chapterId,Pageable pageable);
 }

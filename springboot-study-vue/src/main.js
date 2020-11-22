@@ -10,13 +10,17 @@ import 'element-ui/lib/theme-chalk/index.css'
 import get from './api/get.js'
 import './axios/index.js'
 import './utils/dialog.js'
-import Components from './utils/components.js';
+import Components from './utils/components.js'
+import store from './store/index.js'
+import vuescroll from "vuescroll/dist/vuescroll-native"
 
 Vue.use(VueAxios,Axios)
 Vue.use(ElementUI)
 Vue.use(Components)
+Vue.use(vuescroll);
 
 Vue.prototype.$get = get
+Vue.prototype.$store = store
 
 Vue.config.productionTip = false
 

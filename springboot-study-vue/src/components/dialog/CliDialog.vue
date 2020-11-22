@@ -10,7 +10,7 @@
     top="40vh"
     @close="close"
   >
-    <el-input v-model="inputValue" @change="listenValue" placeholder="hi 别来无恙~"></el-input>
+    <el-input v-model="inputValue" ref="inputer" @change="listenValue" placeholder="hi 别来无恙~"></el-input>
   </el-dialog>
 </template>
 <script>
@@ -32,6 +32,11 @@ export default {
   watch: {
     visible(val) {
       this.innerVisible = val;
+      if(val){
+        this.$nextTick(()=>{
+          this.$refs.inputer.focus();
+        })
+      }
     },
   },
   methods: {
@@ -44,12 +49,10 @@ export default {
                 message:'hi 好久不见，你还好吗~',
                 showClose:false,
                 duration:4000,
-                offset: 20
             })
+            this.$router.push({name:'Novel'})
         }
     }
   },
 };
 </script>
-<style lang="stylus" scoped>
-</style>

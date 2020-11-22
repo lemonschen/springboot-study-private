@@ -1,14 +1,15 @@
 <template>
-  <div class="s-page" :style="{backgroundImage:'url('+backgroundImage+')'}" @click="clickPage">
-    <div class="s-ipc">
-      <el-link type="primary" @click="openIpcManageWebsite" class="refuse-select">{{ipc}}</el-link>
-    </div>
+  <div class="home-page" @click="clickPage">
+    <el-image fit="contain" :src="backgroundImage" class="home-image" @touchend="touchendHandler"></el-image>
+    <!-- <div class="home-ipc">
+      <el-link @click="openIpcManageWebsite" class="refuse-select">{{ipc}}</el-link>
+    </div> -->
     <cli-dialog v-model="cliDialogVisible"></cli-dialog>
   </div>
 </template>
 
 <script>
-import backgroundImage from '@/assets/uninut.jpg'
+import backgroundImage from '@/assets/img/uninut.jpg'
 import CliDialog from './dialog/CliDialog.vue';
 export default {
   components: { CliDialog },
@@ -26,12 +27,16 @@ export default {
         y:false,
         trigger:false
       },
-      cliDialogVisible:false
+      cliDialogVisible:false,
+      ua: this.$store.getters.ua,
+      theLastTouch:null,
+      touchCount:0
     }
   },
   mounted(){
     document.onkeydown = (e) => this.handlerKeyDown(e);
     document.onkeyup = (e) => this.handlerKeyUp(e);
+    this.$store.commit('token','token')
   },
   computed:{
     keyCode(){
@@ -86,22 +91,33 @@ export default {
       this.keyDown.trigger = false;
       this.$notify.success('你好，孟林C');
       this.cliDialogVisible = true;
+    },
+    touchendHandler(e){
+      if(this.theLastTouch === null){
+        e.time = new Date();
+        this.theLastTouch = e;
+        this.touchCount = 1;
+        console.log('第一次点击',this.theLastTouch,this.touchCount)
+      }else {
+        let oldTime = this.theLastTouch.time;
+        let newDate = new Date();
+        e.time = newDate;
+        if(newDate.getTime() - oldTime.getTime() > 500){
+          this.theLastTouch = e;
+          this.touchCount = 1;
+          console.log('超时重置',this.theLastTouch,this.touchCount)
+        }else if(this.touchCount === 5){
+          this.triggerHideFunction();
+          this.theLastTouch = null;
+          this.touchCount = 0;
+          console.log('成功触发',this.theLastTouch,this.touchCount)
+        }else {
+          this.theLastTouch = e;
+          this.touchCount ++;
+          console.log('连续暴击',this.theLastTouch,this.touchCount)
+        }
+      }
     }
   }
 }
 </script>
-
-<style lang="stylus" scoped>
-.s-page
-  width 100%
-  height 100vh
-  background-repeat no-repeat
-  background-size contain
-  background-position center
-  position relative
-  .s-ipc
-    position absolute
-    bottom 1vh
-    width 100%
-    text-align center
-</style>

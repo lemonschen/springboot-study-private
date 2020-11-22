@@ -58,7 +58,7 @@ public class NovelService {
                     }
                     if(line.startsWith("    ")){
                         if(chapterContent.length()>0)chapterContent.append("\n");
-                        chapterContent.append(line);
+                        chapterContent.append(line.replaceFirst(" {4}","       "));
                     }else if(line.startsWith(" ")){
                         //第一章节
                         if(StringUtils.isEmpty(chapter.getChapterName())){

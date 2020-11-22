@@ -5,20 +5,19 @@
 </template>
 
 <script>
+import '@/assets/css/pc.styl'
 export default {
   name: "App",
+  created() {
+    this.getUserAgent();
+  },
+  methods: {
+    getUserAgent() {
+      let flag = navigator.userAgent.match(
+        /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
+      );
+      this.$store.commit("ua", flag ? "mobile" : "pc");
+    },
+  },
 };
 </script>
-
-<style lang="stylus">
-#app
-  width 100%
-  height 100vh
-.refuse-select
-  -moz-user-select none
-  -webkit-user-select none
-  -ms-user-select none
-  -khtml-user-select none
-  -o-user-select none
-  user-select none
-</style>
