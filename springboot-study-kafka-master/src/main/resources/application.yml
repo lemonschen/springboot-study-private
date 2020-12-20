@@ -1,0 +1,15 @@
+
+spring:
+  application:
+    name: springboot-study-kafka-master
+  kafka:
+    bootstrap-servers: http://192.168.1.4:9092,http://192.168.1.4:9093,http://192.168.1.4:9094
+    producer:
+      retries: 0
+      batch-size: 16384
+      buffer-memory: 33554432
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+server:
+  port: 8092
+

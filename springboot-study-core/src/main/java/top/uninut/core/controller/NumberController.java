@@ -1,7 +1,6 @@
 package top.uninut.core.controller;
 
 import org.springframework.web.bind.annotation.*;
-import top.uninut.core.common.RestResult;
 import top.uninut.core.entity.NumberData;
 
 import java.text.DecimalFormat;
@@ -13,7 +12,7 @@ import java.util.List;
 public class NumberController {
 
     @GetMapping
-    public RestResult<List<NumberData>> find(){
+    public List<NumberData> find(){
         List<NumberData> dataList = new ArrayList<>();
         NumberData max = new NumberData();
         max.setS(Short.MAX_VALUE);
@@ -40,7 +39,7 @@ public class NumberController {
         cus.setD(123456789123456789.123456789);
         dataList.add(cus);
 
-        return new RestResult<List<NumberData>>().success(dataList);
+        return dataList;
     }
 
     @PostMapping

@@ -24,8 +24,10 @@
         <module>springboot-study-core</module>
         <module>springboot-study-redis</module>
         <module>springboot-study-elasticsearch</module>
-        <module>springboot-study-kafka</module>
+        <module>springboot-study-kafka-master</module>
+        <module>springboot-study-kafka-worker</module>
         <module>springboot-study-ftp</module>
+        <module>springboot-study-kafka-worker</module>
     </modules>
 
     <dependencies>

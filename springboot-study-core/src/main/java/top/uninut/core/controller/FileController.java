@@ -1,8 +1,8 @@
 package top.uninut.core.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
-import top.uninut.core.common.RestResult;
 import top.uninut.core.entity.File;
 import top.uninut.core.service.FileService;
 
@@ -17,23 +17,31 @@ public class FileController {
         this.service = service;
     }
 
+    @RequestMapping("/test")
+    public void test(){
+
+    }
+
+    @RequestMapping("/testException")
+    public void testException(){
+        throw new RuntimeException("你错了！！！");
+    }
+
     @PostMapping
-    public RestResult<?> save(@RequestBody File file) {
+    public void save(@RequestBody File file) {
         service.save(file);
-        return new RestResult<>().success();
     }
 
     @DeleteMapping("/{id}")
-    public RestResult<?> delete(@PathVariable long id) {
+    public void delete(@PathVariable long id) {
         service.delete(id);
-        return new RestResult<>().success();
     }
 
     @GetMapping("/all")
-    public RestResult<File> findAll(
+    public Page<File> findAll(
             @RequestParam int pageIndex, @RequestParam int pageSize, @RequestParam(required = false) String fileName,
             @RequestParam(required = false) String sortColumn, @RequestParam(required = false) String sortDirection
     ) {
-        return new RestResult<File>().pageSuccess(service.findAll(pageIndex,pageSize,fileName,sortColumn,sortDirection));
+        return service.findAll(pageIndex,pageSize,fileName,sortColumn,sortDirection);
     }
 }
