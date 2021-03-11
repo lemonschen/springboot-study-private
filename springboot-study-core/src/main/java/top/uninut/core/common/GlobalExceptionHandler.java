@@ -14,6 +14,7 @@ public class GlobalExceptionHandler {
         RestResult<Object> result = new RestResult<>();
         result.setCode(500);
         result.setMsg(e.getClass().getName());
+        e.printStackTrace();
         return result;
     }
 }

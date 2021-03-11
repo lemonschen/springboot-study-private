@@ -3,23 +3,39 @@ spring:
   application:
     name: springboot-study-core
   datasource:
-    url: jdbc:mysql://uninut.top:3306/study?useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://192.168.1.100:3306/uninut?characterEncoding=utf8&useSSL=false&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
-    password: Chen265.
+    password: 123456
   jpa:
     show-sql: false
     hibernate:
       ddl-auto: update
-    open-in-view: true
-    properties:
-      hibernate:
-        hbm2ddl:
-          auto: none
-        dialect: org.hibernate.dialect.MySQL57Dialect
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
   servlet:
     multipart:
       max-file-size: 1GB
       max-request-size: 1GB
+  redis:
+    timeout: 10000
+    database: 0
+    password: 123456
+    cluster:
+      max-redirects: 3
+      nodes:
+        - 192.168.1.100:6000
+        - 192.168.1.100:6001
+        - 192.168.1.100:6002
+        - 192.168.1.100:6003
+        - 192.168.1.100:6004
+        - 192.168.1.100:6005
+    lettuce:
+      pool:
+        max-active: 1000  #连接池最大连接数（使用负值表示没有限制）
+        max-idle: 10 # 连接池中的最大空闲连接
+        min-idle: 5 # 连接池中的最小空闲连接
+        max-wait: -1 # 连接池最大阻塞等待时间（使用负值表示没有限制）
+#    port: 16000
+#    host: 192.168.1.7
 server:
   port: 9091

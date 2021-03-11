@@ -1,4 +1,4 @@
-package top.uninut.core.common;
+package top.uninut.core.config;
 
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.serializer.ValueFilter;

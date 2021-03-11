@@ -17,7 +17,6 @@ public class RestResult<T> {
     @JSONField(ordinal = 2,serialzeFeatures = SerializerFeature.WriteMapNullValue)
     private Object data;
 
-
     public RestResult<T> success(){
         this.code = 200;
         this.msg = "请求成功";

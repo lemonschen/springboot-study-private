@@ -1,4 +1,4 @@
-package top.uninut.core.common;
+package top.uninut.core.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
