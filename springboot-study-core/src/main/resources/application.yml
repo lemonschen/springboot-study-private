@@ -3,9 +3,8 @@ spring:
   application:
     name: springboot-study-core
   datasource:
-    url: jdbc:mysql://192.168.1.100:3306/uninut?characterEncoding=utf8&useSSL=false&serverTimezone=UTC
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
+    url: jdbc:mysql://106.13.237.86:3306/uninut?characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+    username: uninut
     password: 123456
   jpa:
     show-sql: false
